@@ -1,6 +1,15 @@
 from selenium.webdriver.common.by import By
 
 
+class MainPageLocators:
+    VIEW_BASKET_LINK = (By.CSS_SELECTOR, "span a[href*='basket']")
+
+
+class BasePageLocators:
+    LOGIN_LINK = (By.CSS_SELECTOR, "#login_link")
+    LOGIN_LINK_INVALID = (By.CSS_SELECTOR, "#login_link_inc")
+
+
 class LoginPageLocators:
     login_form = (By.CSS_SELECTOR, "form#login_form")
     email_login = (By.CSS_SELECTOR, "input#id_login-username")
@@ -15,5 +24,9 @@ class LoginPageLocators:
     button_register = (By.CSS_SELECTOR, "button[name=registration_submit]")
 
 
-class MainPageLocators:
-    LOGIN_LINK = (By.CSS_SELECTOR, "#login_link")
+class ProductPageLocators:
+    ADD_TO_CART_BUTTON = (By.CSS_SELECTOR, "button[class='btn btn-lg btn-primary btn-add-to-basket']")
+    MESSAGE_ABOUT_ADDING = (By.CSS_SELECTOR, "div.alertinner strong")
+    PRODUCT_NAME = (By.CSS_SELECTOR, "div.product_main h1")
+    MESSAGE_BASKET_TOTAL = (By.CSS_SELECTOR, ".alert-info .alertinner strong")
+    PRODUCT_PRICE = (By.CSS_SELECTOR, ".product_main .price_color")
