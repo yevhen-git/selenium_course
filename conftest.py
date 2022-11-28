@@ -7,7 +7,7 @@ import pytest
 @pytest.fixture(scope="function")
 def browser():
     chrome_options = Options()
-    chrome_options.add_argument("--headless")
+    # chrome_options.add_argument("--headless")
 
     browser = webdriver.Chrome(executable_path=ChromeDriverManager().install(), options=chrome_options)
     # чтоб браузер запускался в фоне
