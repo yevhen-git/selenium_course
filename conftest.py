@@ -4,16 +4,20 @@ from selenium import webdriver
 import pytest
 
 
+def pytest_addoption(parser):
+    parser.addoption('--language', default=None,
+                     help="Choose language")
+
+
 @pytest.fixture(scope="function")
-def browser():
-    chrome_options = Options()
-    # chrome_options.add_argument("--headless")
+def browser(request):
+    user_language = request.config.getoption("language")
 
-    browser = webdriver.Chrome(executable_path=ChromeDriverManager().install(), options=chrome_options)
-    # чтоб браузер запускался в фоне
-    # browser = webdriver.Chrome(options=chrome_options)
+    options = Options()
+    options.add_experimental_option('prefs', {'intl.accept_languages': user_language})
 
-    print(f"\nstart chrome browser...")
+    browser = webdriver.Chrome(options=options)
+    print(f"\nstart chrome browser for test in {user_language}...")
     yield browser
     print("\nquit browser..")
     browser.quit()
